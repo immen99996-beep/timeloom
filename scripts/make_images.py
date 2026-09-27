@@ -17,9 +17,10 @@ img = Image.new("RGB", (1200, 630), BG)
 d = ImageDraw.Draw(img)
 d.rounded_rectangle([72, 72, 168, 168], 22, fill=BLUE)
 globe(d, 120, 120, 30, (255, 255, 255))
-d.text((72, 220), "Country Holiday +", font=bold(76), fill=INK)
-d.text((72, 310), "Timezone Planner", font=bold(76), fill=INK)
-d.text((72, 420), "Local time, public holidays and shared working hours", font=reg(34), fill=MUTED)
+d.text((196, 88), "TimeLoom", font=bold(60), fill=INK)
+d.text((72, 240), "Find a meeting time", font=bold(76), fill=INK)
+d.text((72, 330), "that works in every country", font=bold(76), fill=INK)
+d.text((72, 430), "Local time, public holidays and shared working hours", font=reg(34), fill=MUTED)
 x = 72
 for label, bg, fg in [("Working Day", (231, 246, 236), (21, 128, 61)), ("Public Holiday", (255, 241, 227), (194, 87, 12)), ("Too late", (253, 236, 236), (198, 40, 40))]:
     w = d.textlength(label, font=bold(28)) + 44

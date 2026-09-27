@@ -95,7 +95,7 @@ def layout(path, title, description, body, *, section="", jsonld=None, scripts="
            if CFG.get("adsense_client") else "")
     verify = f'<meta name="google-site-verification" content="{e(CFG["google_site_verification"])}">' if CFG.get("google_site_verification") else ""
     nav = "".join(f'<a href="{href}"{" aria-current=\"page\"" if section == href else ""}>{label}</a>' for href, label in NAV)
-    full_title = title if title == NAME else f"{title} | {CFG['short_name']}"
+    full_title = f"{NAME} – {CFG['tagline']}" if path == "/" else f"{title} | {CFG['short_name']}"
     doc = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -126,7 +126,7 @@ def layout(path, title, description, body, *, section="", jsonld=None, scripts="
 {SPRITE}
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><span class="brand-mark">{icon("globe")}</span><span class="brand-name">{e(NAME)}</span></a>
+    <a class="brand" href="/"><span class="brand-mark">{icon("globe")}</span><span><span class="brand-name">{e(NAME)}</span><span class="brand-sub">{e(CFG["tagline"])}</span></span></a>
     <nav class="nav" aria-label="Main">{nav}</nav>
   </div>
 </header>
@@ -249,7 +249,7 @@ def build_home():
 </main>
 <div class="toast" id="toast" role="status" hidden></div>"""
     ld = [
-        {"@context": "https://schema.org", "@type": "WebSite", "name": NAME, "url": URL + "/"},
+        {"@context": "https://schema.org", "@type": "WebSite", "name": NAME, "alternateName": "Time Loom", "url": URL + "/"},
         {"@context": "https://schema.org", "@type": "WebApplication", "name": NAME, "url": URL + "/",
          "applicationCategory": "BusinessApplication", "operatingSystem": "Any",
          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},

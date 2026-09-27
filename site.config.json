@@ -1,10 +1,11 @@
 {
   "site_url": "https://time-loom.com",
-  "site_name": "Country Holiday + Timezone Planner",
-  "short_name": "Holiday + Timezone Planner",
+  "site_name": "TimeLoom",
+  "short_name": "TimeLoom",
   "contact_email": "guiho9722@gmail.com",
   "owner_name": "Ho",
   "adsense_client": "",
   "google_site_verification": "",
-  "lastmod": ""
+  "lastmod": "",
+  "tagline": "Time zone and public holiday planner"
 }
