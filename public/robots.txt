@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://time-loom.com/sitemap.xml

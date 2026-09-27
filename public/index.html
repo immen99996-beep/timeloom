@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Country Holiday + Timezone Planner</title>
+<meta name="description" content="Compare local times across 246 countries, see public holidays and weekends, and find the working hours that overlap for every location in your meeting.">
+<link rel="canonical" href="https://time-loom.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Country Holiday + Timezone Planner">
+<meta property="og:title" content="Country Holiday + Timezone Planner">
+<meta property="og:description" content="Compare local times across 246 countries, see public holidays and weekends, and find the working hours that overlap for every location in your meeting.">
+<meta property="og:url" content="https://time-loom.com/">
+<meta property="og:image" content="https://time-loom.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2563EB">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="preload" href="/data/world.json" as="fetch" crossorigin><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Country Holiday + Timezone Planner", "url": "https://time-loom.com/"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Country Holiday + Timezone Planner", "url": "https://time-loom.com/", "applicationCategory": "BusinessApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": "Compare local times, public holidays and shared working hours across countries and cities."}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does the planner handle daylight saving time?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Times are converted with your browser's time zone database, which includes daylight saving rules. If you pick a date after a clock change, the offsets shown are the ones that apply on that date."}}, {"@type": "Question", "name": "Which holidays are included?", "acceptedAnswer": {"@type": "Answer", "text": "National public holidays for 2025 to 2028. State, provincial and bank holidays are not included. Islamic holidays in some countries are marked “estimated” because the official date depends on the moon sighting."}}, {"@type": "Question", "name": "Why is Friday a weekend day for some countries?", "acceptedAnswer": {"@type": "Answer", "text": "Several countries, including Saudi Arabia, Qatar, Kuwait, Egypt and Israel, have a Friday–Saturday weekend. The planner uses each country's own weekend. See weekends around the world."}}, {"@type": "Question", "name": "Where are my saved locations stored?", "acceptedAnswer": {"@type": "Answer", "text": "In your browser only, using local storage. Nothing is sent to a server, and clearing your browser data removes them."}}, {"@type": "Question", "name": "How do I share a plan?", "acceptedAnswer": {"@type": "Answer", "text": "Press Share and copy the link. It contains the locations, the date and time, and the clock format, so the other person sees the same plan."}}, {"@type": "Question", "name": "A holiday date is wrong. How do I report it?", "acceptedAnswer": {"@type": "Answer", "text": "Send the country, the date and a link to an official source through the contact page."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-globe" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></symbol>
+<symbol id="i-event" viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></symbol>
+<symbol id="i-groups" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></symbol>
+<symbol id="i-warn" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></symbol>
+<symbol id="i-ok" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></symbol>
+<symbol id="i-block" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
+</svg>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></span><span class="brand-name">Country Holiday + Timezone Planner</span></a>
+    <nav class="nav" aria-label="Main"><a href="/" aria-current="page">Planner</a><a href="/holidays/">Holidays</a><a href="/guides/">Guides</a><a href="/about/">About</a></nav>
+  </div>
+</header>
+
+<section class="share" id="sharePanel" hidden>
+  <div class="wrap">
+    <div class="share-row">
+      <label for="shareLink">Link to this plan</label>
+      <input class="field num" id="shareLink" readonly>
+      <button type="button" class="btn primary" data-action="copy-link"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>Copy link</button>
+    </div>
+    <div class="share-row">
+      <label for="openCode">Open a shared plan</label>
+      <input class="field" id="openCode" placeholder="Paste a shared link">
+      <button type="button" class="btn" data-action="open-code">Open</button>
+    </div>
+    <p class="hint">The link keeps the locations, the base location, the date and time, and the clock format.</p>
+  </div>
+</section>
+<main class="wrap" id="main">
+  <section class="hero">
+    <h1>Where are you planning?</h1>
+    <p class="lead">Add countries or cities to compare local times, check public holidays and find the hours when everyone is at work. Covers 246 countries and territories.</p>
+    <div class="search">
+      <div class="search-box">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="Search a country or city, e.g. Seoul, Germany, 일본" aria-label="Search a country or city" aria-controls="results">
+      </div>
+      <div class="results" id="results" role="listbox" hidden></div>
+    </div>
+    <div class="chips" id="savedChips"></div>
+  </section>
+
+  <section class="panel meet" id="meet" aria-live="polite"><div class="empty-state"><span>Loading the planner…</span></div></section>
+
+  <div class="sec-head" style="margin-top:14px;justify-content:flex-end">
+    <div class="tools">
+      <div class="seg" role="group" aria-label="Clock format">
+        <button type="button" id="fmt12" data-action="fmt" data-v="12">12h</button>
+        <button type="button" id="fmt24" data-action="fmt" data-v="24">24h</button>
+      </div>
+      <button type="button" class="btn primary" id="shareToggle" data-action="share-toggle" aria-controls="sharePanel" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Share</button>
+    </div>
+  </div>
+
+  <section class="sec" id="compare" style="margin-top:8px">
+    <div class="sec-head">
+      <h2><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Time Comparison</h2>
+      <p class="hint">Click a time to change it. The other locations update to match.</p>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <div class="split">
+    <section class="sec" id="common">
+      <div class="sec-head"><h2><svg class="icon" aria-hidden="true"><use href="#i-groups"/></svg>Common Available Time</h2></div>
+      <div class="panel tl-panel" id="timeline"></div>
+    </section>
+    <section class="sec" id="holidays">
+      <div class="sec-head"><h2><svg class="icon" aria-hidden="true"><use href="#i-event"/></svg>Holiday Information</h2></div>
+      <div class="hol-list" id="holList"></div>
+    </section>
+  </div>
+
+  <div class="home-info">
+    <section>
+      <h2>How the planner works</h2>
+      <p>Each card shows the time at one location for the moment you pick. Change the time on any card, or in the bar at the top, and every other card converts to the same moment. The base location is the one used for the date picker and the day chart.</p>
+      <p>A day counts as a working day unless it is a weekend in that country or a national public holiday. Working hours default to 09:00–18:00 and can be changed per location by clicking its time.</p>
+      <ul>
+        <li><b>Green</b> means a working day inside working hours.</li>
+        <li><b>Orange</b> marks a public holiday, a weekend, or a time outside working hours.</li>
+        <li><b>Red</b> marks a time before 07:00 or after 22:00.</li>
+        <li><b>Blue</b> in the day chart marks the slots when everyone is available.</li>
+      </ul>
+    </section>
+    <section class="faq">
+      <h2>Questions</h2>
+      <details><summary>Does the planner handle daylight saving time?</summary><p>Yes. Times are converted with your browser's time zone database, which includes daylight saving rules. If you pick a date after a clock change, the offsets shown are the ones that apply on that date.</p></details><details><summary>Which holidays are included?</summary><p>National public holidays for 2025 to 2028. State, provincial and bank holidays are not included. Islamic holidays in some countries are marked “estimated” because the official date depends on the moon sighting.</p></details><details><summary>Why is Friday a weekend day for some countries?</summary><p>Several countries, including Saudi Arabia, Qatar, Kuwait, Egypt and Israel, have a Friday–Saturday weekend. The planner uses each country's own weekend. See <a href="/guides/weekends-around-the-world/">weekends around the world</a>.</p></details><details><summary>Where are my saved locations stored?</summary><p>In your browser only, using local storage. Nothing is sent to a server, and clearing your browser data removes them.</p></details><details><summary>How do I share a plan?</summary><p>Press Share and copy the link. It contains the locations, the date and time, and the clock format, so the other person sees the same plan.</p></details><details><summary>A holiday date is wrong. How do I report it?</summary><p>Send the country, the date and a link to an official source through the <a href="/contact/">contact page</a>.</p></details>
+    </section>
+  </div>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Guides</h2><a href="/guides/" class="hint">All guides</a></div>
+    <div class="guide-list"><a class="panel guide-card" href="/guides/daylight-saving-time-2026-2027/"><h3>Daylight Saving Time Dates for 2026 and 2027</h3><p>The exact clock-change dates by region, and the weeks when the gap between New York and London is only four hours.</p></a><a class="panel guide-card" href="/guides/meeting-time-across-time-zones/"><h3>How to Find a Meeting Time Across Time Zones</h3><p>Working-hour overlap for common city pairs, and the checks that stop a meeting from landing on a holiday or at 2 AM.</p></a><a class="panel guide-card" href="/guides/weekends-around-the-world/"><h3>Countries Where the Weekend Is Not Saturday and Sunday</h3><p>Friday–Saturday weekends, one-day weekends, and the four working days that Saudi Arabia and Germany actually share.</p></a></div>
+  </section>
+</main>
+<div class="toast" id="toast" role="status" hidden></div>
+<footer class="site-foot">
+  <div class="wrap">
+    <nav class="foot-links" aria-label="Footer">
+      <a href="/">Planner</a><a href="/holidays/">Public holidays</a><a href="/guides/">Guides</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a>
+    </nav>
+    <p class="foot-note">Holiday lists cover national public holidays from 2025 to 2028. Regional and bank holidays are not included, and dates marked “estimated” depend on official announcements. Check important dates with an official source.</p>
+    <p class="foot-note">© 2026 Country Holiday + Timezone Planner</p>
+  </div>
+</footer>
+<script src="/assets/app.js" defer></script>
+</body>
+</html>
